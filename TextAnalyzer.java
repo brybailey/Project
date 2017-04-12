@@ -103,12 +103,14 @@ class TextAnalyzer {
      * Prints a report of the word and character frequencies
      */
     private void printReport() {
+	System.out.println( "Word Analysis:\n" );         	    // Word Analysis
 	for( Integer lenOrder: firstOrder.keySet() ) {
 	    TreeMap<String, Integer> out = firstOrder.get(lenOrder);
 	    for( String alphOrder: out.keySet() ) {
 		System.out.println( out.get(alphOrder) + " " + alphOrder );
 	    }
 	}    
+	System.out.println( "\nCharacter Analysis\n" );
 	for( char c: charFreq.keySet() ) {
 	    System.out.println( charFreq.get(c) + " " + c );
 	}
