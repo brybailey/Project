@@ -41,7 +41,7 @@ class TextAnalyzer {
     /*
      * Builds out word treemaps 
      */
-    private void addWord( String word ) {
+    public void addWord( String word ) {
 	addChars( word );
 	int len = word.length();
 	if( firstOrder.containsKey(len) ) {
@@ -63,7 +63,7 @@ class TextAnalyzer {
     /*
      * Builds out character frequenct treemap
      */
-    private void addChars( String word ) {
+    public void addChars( String word ) {
 	for( char c: word.toCharArray() ) {
 	    if( charFreq.containsKey( c ) ) {
 		int count = charFreq.get(c);  // Already contains the character; update count
@@ -77,7 +77,7 @@ class TextAnalyzer {
     /*
      * Creates an output file report from the constructed treemaps
      */
-    private void createReport() {
+    public void createReport() {
 	try{ 
 	    File file = new File( "analyzed.txt" );
 	    FileWriter fileWriter = new FileWriter(file);
@@ -102,7 +102,7 @@ class TextAnalyzer {
     /*
      * Prints a report of the word and character frequencies
      */
-    private void printReport() {
+    public void printReport() {
 	System.out.println( "Word Analysis:\n" );         	    // Word Analysis
 	for( Integer lenOrder: firstOrder.keySet() ) {
 	    TreeMap<String, Integer> out = firstOrder.get(lenOrder);
