@@ -22,7 +22,6 @@ import java.io.IOException;
 class TextAnalyzer { 
     
     private TreeMap<Integer, TreeMap<String, Integer>> firstOrder; // Ordering by string length
-    private TreeMap<String, Integer> secondOrder;                  // Ordering by ASCII
     private TreeMap<Character, Integer> charFreq;                  // Ordering (char) by ASCII 
 
 
@@ -44,8 +43,9 @@ class TextAnalyzer {
     public void addWord( String word ) {
 	addChars( word );
 	int len = word.length();
+	TreeMap<String, Integer> secondOrder;        // Ordering by ASCII
 	if( firstOrder.containsKey(len) ) {
-	    secondOrder = firstOrder.get( len );
+	    secondOrder = firstOrder.get( len );    
 	    if( secondOrder.containsKey( word ) ) {  // Already contains the word; update count
 		int count = secondOrder.get( word );
 		secondOrder.put( word, ++count );  
@@ -110,7 +110,7 @@ class TextAnalyzer {
 		System.out.println( out.get(alphOrder) + " " + alphOrder );
 	    }
 	}    
-	System.out.println( "\nCharacter Analysis\n" );
+	System.out.println( "\nCharacter Analysis:\n" );
 	for( char c: charFreq.keySet() ) {
 	    System.out.println( charFreq.get(c) + " " + c );
 	}
